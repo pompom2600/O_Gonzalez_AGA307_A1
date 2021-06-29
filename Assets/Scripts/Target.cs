@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    private float healthFour = 4;
 
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.collider.CompareTag("Target"))
+        if (collision.collider.CompareTag("Projectile"))
         {
-            collision.collider.GetComponent<Renderer>().material.color = Color.red;
-            Destroy(collision.collider.gameObject, 1f);
-            Destroy(this.gameObject);
+            healthFour --;
+            if (healthFour <= 0)
+            {
+                GetComponent<Renderer>().material.color = Color.red;
+                Destroy(collision.collider.gameObject);
+                Destroy(this.gameObject, 1f);
+            }
+           
 
         }
 

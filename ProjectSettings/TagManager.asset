@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Projectile
   - Target
+  - Zone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ray
   - Water
   - UI
   - Ground

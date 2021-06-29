@@ -7,7 +7,7 @@ public class FiringPoint : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed = 100;
     public Transform firingPoint;
-
+    public GameObject[] projectiles;
 
 
     void Update()
@@ -25,5 +25,20 @@ public class FiringPoint : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+
+
+        }
     }
 }
