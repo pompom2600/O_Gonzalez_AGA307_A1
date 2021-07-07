@@ -6,7 +6,6 @@ public class SpawnPoint : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject[] enemies;
-    public List<GameObject> enemyTypes; 
 
 
     void Update()
@@ -16,7 +15,8 @@ public class SpawnPoint : MonoBehaviour
             int rndEnemy = Random.Range(0, enemies.Length);
             int rndSpawn = Random.Range(0, spawnPoints.Length);
             GameObject enemy = Instantiate(enemies[rndEnemy], spawnPoints[rndSpawn].position, spawnPoints[rndSpawn].rotation);
-            enemyTypes.Add(enemy);
+           
         }
     }
+
 }

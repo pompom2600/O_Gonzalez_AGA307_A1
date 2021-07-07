@@ -8,37 +8,38 @@ public class FiringPoint : MonoBehaviour
     public float projectileSpeed = 100;
     public Transform firingPoint;
     public GameObject[] projectiles;
+    private int weaponSlot;
 
-
+    private void Start()
+    {
+        weaponSlot = 0;
+    }
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-
             GameObject projectileInstance;
-
-            projectileInstance = Instantiate(projectile, firingPoint.position, firingPoint.rotation);
-
+            projectileInstance = Instantiate(projectiles[weaponSlot], firingPoint.position, firingPoint.rotation);
             projectileInstance.GetComponent<Rigidbody>().AddForce(firingPoint.forward * projectileSpeed, ForceMode.Impulse);
-
             Destroy(projectileInstance, 3);
-
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKey("1"))
         {
-
-
+            weaponSlot = 0;
+            Debug.Log("Weapon 1 Selected");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (Input.GetKey("2"))
         {
-
-
+            weaponSlot = 1;
+            Debug.Log("Weapon 2 Selected");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+
+        if (Input.GetKey("3"))
         {
-
-
+            weaponSlot = 2;
+            Debug.Log("Weapon 3 Selected");
         }
     }
 }
