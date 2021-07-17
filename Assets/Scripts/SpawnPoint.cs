@@ -12,10 +12,10 @@ public class SpawnPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I)) //Instantiate random enemies into random spawns
         {
+            GameManager.instance.Targets++;
             int rndEnemy = Random.Range(0, enemies.Length);
             int rndSpawn = Random.Range(0, spawnPoints.Length);
             GameObject enemy = Instantiate(enemies[rndEnemy], spawnPoints[rndSpawn].position, spawnPoints[rndSpawn].rotation);
-           
         }
     }
 

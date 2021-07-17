@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7150097010177421235}
   - component: {fileID: 5659135762634581056}
   m_Layer: 0
-  m_Name: Target
+  m_Name: Target 3
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,5 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6a181477426c247a339f500281d7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizes: 1
-  moveDistance: 0
+  sizes: 2

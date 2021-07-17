@@ -4,62 +4,58 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public TargetSizes sizes;
+    public TargetDifficulty sizes;
     private float scaleFactor;
 
-    private float moveDistance = 550;
-    private float speed = 4;
-    //private float spawnDelay = 3;
-    public Transform sP;
+    
+    private float moveDistance = 500;
+    public float speed = 20;
 
     void SetUp()
     {
         switch (sizes)
         {
-            case TargetSizes.Medium:
+            case TargetDifficulty.Medium:
+                GameManager.instance.Targets++;
                 scaleFactor = 1;
+                speed = 12;
                 transform.localScale = Vector3.one * scaleFactor;
+                GetComponent<Renderer>().material.color = Color.yellow;
                 break;
 
-            case TargetSizes.Large:
+            case TargetDifficulty.Easy:
+                GameManager.instance.Targets++;
                 scaleFactor = 2;
+                speed = 10;
                 transform.localScale = Vector3.one * scaleFactor;
-                print("large");
+                GetComponent<Renderer>().material.color = Color.green;
                 break;
 
-            case TargetSizes.Small:
+            case TargetDifficulty.Hard:
+                GameManager.instance.Targets++;
                 scaleFactor = 0.5f;
+                speed = 15;
                 transform.localScale = Vector3.one * scaleFactor;
+                GetComponent<Renderer>().material.color = Color.red;
                 break;
         }
-
     }
+
     void Start()
     {
         SetUp();
-        StartCoroutine(Routine());
+       
     }
 
-
-
-    void Update()
+    public IEnumerator Routine()
     {
-     
-    }
-
-
-    IEnumerator Routine()
-    {
-        for(int i = 0; i < moveDistance; i++)
+        while (gameObject != null)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            transform.Translate(Vector3.left * speed);
+
             yield return new WaitForSeconds(3f);
-
-            int rndEnemy = Random.Range(0, enemies.Length);
-            int rndSpawn = Random.Range(0, spawnPoints.Length);
-            GameObject enemy = Instantiate(enemies[rndEnemy], spawnPoints[rndSpawn].position, spawnPoints[rndSpawn].rotation);
+            print("sdtrawberry");
         }
-
+        yield return null;
     }
-
 }

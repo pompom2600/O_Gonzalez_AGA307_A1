@@ -2,20 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TargetSizes
+public enum TargetDifficulty
 {
-    Small, Medium, Large
+    Hard, Medium, Easy
 }
 
-public class TargetManager : MonoBehaviour
+public class TargetManager : Singleton<TargetManager>
 {
-    
+    public List<Target> targets;
+    public TargetDifficulty difficulty;
+    public int targetCap = 10;
+
+
     void Start()
     {
-        
+        foreach (Target t in targets)
+        {
+            StartCoroutine(t.Routine());
+        }
     }
+  
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //targetInstance = Random.Range(0, targets.Length);
+        }
     }
+
+   
 }
+
