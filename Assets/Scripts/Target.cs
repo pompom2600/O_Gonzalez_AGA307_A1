@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public TargetDifficulty sizes;
-    private float scaleFactor;
-
-    
-    private float moveDistance = 500;
-    public float speed = 20;
+    public TargetDifficulty sizes; //Enum of TargetSizes from TargetManager
+    private float scaleFactor; //Scale Factor
+    public float speed; 
 
     void SetUp()
     {
-        switch (sizes)
+        switch (sizes) //Switch Statement
         {
             case TargetDifficulty.Medium:
-                GameManager.instance.Targets++;
-                scaleFactor = 1;
-                speed = 12;
-                transform.localScale = Vector3.one * scaleFactor;
-                GetComponent<Renderer>().material.color = Color.yellow;
+                GameManager.instance.Targets++; //Increase Target Number
+                scaleFactor = 1; //Scale Factor
+                speed = 12; //Speed Factor
+                transform.localScale = Vector3.one * scaleFactor; //Change the scale
+                GetComponent<Renderer>().material.color = Color.yellow; //Material Colour change
                 break;
 
             case TargetDifficulty.Easy:
@@ -40,22 +37,25 @@ public class Target : MonoBehaviour
                 break;
         }
     }
+    public IEnumerator Move (Vector3 targetPosition, float moveTime) //Coroutine for moving Targets overtime
+    {
+        Vector3 originalPosition = transform.position;
+        float elapseTime = 0;
+        
+        while(elapseTime < moveTime){ //While elsapse time is less than movetime:
+            elapseTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapseTime / moveTime); //Linear Interpolation
 
+            yield return null;
+        }
+    }
     void Start()
     {
-        SetUp();
-       
+        SetUp(); //Call Setup at Start
     }
 
-    public IEnumerator Routine()
+    private void OnDestroy()
     {
-        while (gameObject != null)
-        {
-            transform.Translate(Vector3.left * speed);
-
-            yield return new WaitForSeconds(3f);
-            print("sdtrawberry");
-        }
-        yield return null;
+        StopAllCoroutines(); //Fixing dem bugs yo
     }
 }

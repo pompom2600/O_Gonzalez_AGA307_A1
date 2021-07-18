@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton <T>:MonoBehaviour where T:MonoBehaviour
+public class Singleton <T>:MonoBehaviour where T:MonoBehaviour //Bigglybob ive got no clue what it all means but links things together
 {
     public bool dontDestroy;
     private static T instance_;

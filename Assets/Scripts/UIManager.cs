@@ -8,13 +8,16 @@ public class UIManager : Singleton<UIManager>
 {
     public TMP_Text scoreCount;
     public TMP_Text enemiesLeft;
-    public TMP_Text difficultyCount;
+    public TMP_Text weaponName;
     public TMP_Text timerCount;
+
+    public GameObject SphereChange;
 
 
     void Start()
     {
-        
+        SphereChange.SetActive(false);
+        weaponName.text = "Weapon 1";
     }
 
     

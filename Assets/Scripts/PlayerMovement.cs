@@ -15,18 +15,17 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    //Jumpthings
     public float jumpHeight = 3f;
     Vector3 velocity;
     bool isGrounded;
     
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Ground check
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if(isGrounded && velocity.y < 0)
+        if(isGrounded && velocity.y < 0) //Jump when on ground
         {
-
             velocity.y = -2f;
         }
 

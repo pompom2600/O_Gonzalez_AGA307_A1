@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
+public enum GameState //Gamestate Enum for the Title and Ingame
 {
     Title, InGame
 }
@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void Update()
     {
-        if (gameState == GameState.InGame)
+        if (gameState == GameState.InGame) //Timer Countdown if gamestate is InGame
             Timer -= Time.deltaTime;
       
     }

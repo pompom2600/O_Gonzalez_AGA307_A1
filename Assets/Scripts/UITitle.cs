@@ -7,12 +7,11 @@ using UnityEngine.SceneManagement;
 public class UITitle : MonoBehaviour
 {
 
-
     public void LoadScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName);
-        SceneManager.LoadScene("TitlePage");
     }
+
 
     public void StartGame()
     {
