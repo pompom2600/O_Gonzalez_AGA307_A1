@@ -7,18 +7,18 @@ using UnityEngine.SceneManagement;
 public class UITitle : MonoBehaviour
 {
 
-    public void LoadScene(string _sceneName)
+    public void LoadScene(string _sceneName) //LoadScene through a string
     {
         SceneManager.LoadScene(_sceneName);
     }
 
 
-    public void StartGame()
+    public void StartGame() //Startgame loads scene "SampleScene"
     {
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void QuitGame()
+    public void QuitGame() //QuitGame = application quit
     {
         Application.Quit();
     }

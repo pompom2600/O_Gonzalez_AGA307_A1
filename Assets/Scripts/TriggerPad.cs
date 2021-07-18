@@ -4,35 +4,34 @@ using UnityEngine;
 
 public class TriggerPad : MonoBehaviour
 {
-    public GameObject sphere;
-    private Color defaultColor;
+    public GameObject sphere; //Variable
+    private Color defaultColor; // Variable
 
     private void Start()
     {
-        defaultColor = sphere.GetComponent<Renderer>().material.color;
+        defaultColor = sphere.GetComponent<Renderer>().material.color; //Setting default colour for sphere
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other) //On triggerEnter
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) //compare tag "Player"
         {
-            sphere.GetComponent<Renderer>().material.color = Color.green;
+            sphere.GetComponent<Renderer>().material.color = Color.green; //Setting colour to green
         }
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) //On triggerStay
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) //compare tag "Player"
         {
-            sphere.transform.localScale += Vector3.one * 0.01f;
-
+            sphere.transform.localScale += Vector3.one * 0.01f; //Change size of Sphere
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //On triggerExit
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) // Compare tag "Player"
         {
-
-            sphere.transform.localScale = Vector3.one;
-            sphere.GetComponent<Renderer>().material.color = defaultColor;
+            sphere.transform.localScale = Vector3.one; //Revert Scale
+            sphere.GetComponent<Renderer>().material.color = defaultColor; // Revert colour
         }
     }
 }

@@ -42,11 +42,11 @@ public class Target : MonoBehaviour
         Vector3 originalPosition = transform.position;
         float elapseTime = 0;
         
-        while(elapseTime < moveTime){ //While elsapse time is less than movetime:
+        while(this != null && elapseTime < moveTime){ //not null && While elsapse time is less than movetime:
             elapseTime += Time.deltaTime;
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapseTime / moveTime); //Linear Interpolation
 
-            yield return null;
+            yield return null; //yeet that null
         }
     }
     void Start()
